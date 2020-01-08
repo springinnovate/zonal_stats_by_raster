@@ -94,7 +94,7 @@ if __name__ == '__main__':
             LOGGER.info(
                 'processing %d of %d (lucode %d) for %s', index+1,
                 len(unique_values), mask_code,
-                os.path.filename(sample_raster_path))
+                os.path.basename(sample_raster_path))
             mask_raster_path = os.path.join(working_dir, '%d.tif' % mask_code)
             pygeoprocessing.raster_calculator(
                 [(aligned_raster_path_list[0], 1),
@@ -111,7 +111,7 @@ if __name__ == '__main__':
             raster = None
             stats_table.write(
                 '%s,%d,%f,%f,%f,%f\n' % (
-                    os.path.filename(sample_raster_path), mask_code,
+                    os.path.basename(sample_raster_path), mask_code,
                     raster_min, raster_max, raster_mean, raster_stdev))
     stats_table.close()
     try:
