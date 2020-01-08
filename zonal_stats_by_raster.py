@@ -72,7 +72,10 @@ if __name__ == '__main__':
 
     working_dir = tempfile.mkdtemp(
         prefix="zonal_stats_temp_workspace_", dir='.')
-    stats_table = open('stats_table%s.csv' % datetime.datetime.now(), 'w')
+    time_as_str = ''.join(
+        [x if x not in [' ', ':', '.', '-'] else '_'
+         for x in str(datetime.datetime.now())])
+    stats_table = open('stats_table_%s.csv' % time_as_str, 'w')
     stats_table.write('raster_filename,lucode,min,max,mean,stdev\n')
 
     for sample_raster_path in sample_raster_path_list:
